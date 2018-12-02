@@ -11,11 +11,11 @@
 -- SET FOREIGN_KEY_CHECKS=0;
 
 
---  DROP DATABASE IF EXISTS crm;
---  CREATE DATABASE crm;
+--  DROP DATABASE IF EXISTS devdb001;
+--  CREATE DATABASE devdb001;
 
 
-USE crm;
+USE devdb001;
 
 
 -- ---
@@ -173,5 +173,22 @@ CREATE TABLE `interactions` (
   `id_people` VARCHAR(255) NULL DEFAULT NULL,
   `id_interaction_type` VARCHAR(255) NULL DEFAULT NULL,
   `desccription` MEDIUMTEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'notes'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `notes`;
+
+CREATE TABLE `notes` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `note` VARCHAR(255) NULL DEFAULT NULL,
+  `id_interaction` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
