@@ -141,3 +141,37 @@ CREATE TABLE `people_groups` (
   `id_groups` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
+
+
+-- ---
+-- Table 'interaction_type'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `interaction_type`;
+
+CREATE TABLE `interaction_type` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `type` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'interactions'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `interactions`;
+
+CREATE TABLE `interactions` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_people` VARCHAR(255) NULL DEFAULT NULL,
+  `id_interaction_type` VARCHAR(255) NULL DEFAULT NULL,
+  `desccription` MEDIUMTEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
