@@ -15,10 +15,64 @@
 --  CREATE DATABASE crm;
 
 
+USE crm;
+
+
 -- ---
--- Table 'users'
+-- Table 'people'
 -- 
 -- ---
 
-USE crm;
+DROP TABLE IF EXISTS `people`;
 
+CREATE TABLE `people` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `given_name` VARCHAR(255) NOT NULL,
+  `preferred_name` VARCHAR(255) NOT NULL,
+  `middle_name` VARCHAR(255) NULL DEFAULT NULL,
+  `family_name` VARCHAR(255) NOT NULL,
+  `maiden_name` VARCHAR(255) NULL DEFAULT NULL,
+  `gender` VARCHAR(255) NOT NULL,
+  `birth_year` SMALLINT NULL DEFAULT NULL,
+  `birth_month` TINYINT NULL DEFAULT NULL,
+  `birth_day` TINYINT NULL DEFAULT NULL,
+  `id_city` INTEGER NULL DEFAULT NULL,
+  `id_employer` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'phone_numbers'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `phone_numbers`;
+
+CREATE TABLE `phone_numbers` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_people` INTEGER NOT NULL,
+  `digits` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'emails'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `emails`;
+
+CREATE TABLE `emails` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_people` INTEGER NOT NULL,
+  `email_address` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
