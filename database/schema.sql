@@ -76,3 +76,35 @@ CREATE TABLE `emails` (
   `email_address` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
+
+
+-- ---
+-- Table 'cities'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `cities`;
+
+CREATE TABLE `cities` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `city` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'employers'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `employers`;
+
+CREATE TABLE `employers` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `employer` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
