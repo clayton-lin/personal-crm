@@ -108,3 +108,36 @@ CREATE TABLE `employers` (
   `employer` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 )
+
+
+-- ---
+-- Table 'groups'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `groups`;
+
+CREATE TABLE `groups` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `group` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+-- ---
+-- Table 'people_groups'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `people_groups`;
+
+CREATE TABLE `people_groups` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id_people` VARCHAR(255) NULL DEFAULT NULL,
+  `id_groups` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
