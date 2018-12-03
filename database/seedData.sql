@@ -18,3 +18,16 @@ INSERT INTO `cities` (`created_at`, `updated_at`, `city`) VALUES
 (NOW(), NOW(), 'Union City'),
 (NOW(), NOW(), 'Vancouver'),
 (NOW(), NOW(), 'Las Vegas');
+
+
+INSERT INTO `groups` (`created_at`, `updated_at`, `group`) VALUES
+(NOW(), NOW(), 'Family'),
+(NOW(), NOW(), 'Friend'),
+(NOW(), NOW(), 'Close Friend'),
+(NOW(), NOW(), 'Colleague'),
+(NOW(), NOW(), 'Kairos'),
+(NOW(), NOW(), 'UCLA'),
+(NOW(), NOW(), 'Hawaii'),
+(NOW(), NOW(), 'Austin'),
+(NOW(), NOW(), 'Hack Reactor'),
+(NOW(), NOW(), 'Acquaintance');
