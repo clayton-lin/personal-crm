@@ -19,6 +19,22 @@ USE devdb001;
 
 
 -- ---
+-- Table 'users'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  created_at TIMESTAMP NULL DEFAULT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  -- need identifying info
+  PRIMARY KEY (id)
+)
+
+
+-- ---
 -- Table 'contacts'
 -- 
 -- ---
@@ -29,6 +45,7 @@ CREATE TABLE contacts (
   id INTEGER NOT NULL AUTO_INCREMENT,
   created_at TIMESTAMP NULL DEFAULT NULL,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  user INTEGER NOT NULL,
   given_name VARCHAR(255) NOT NULL,
   preferred_name VARCHAR(255) NOT NULL,
   middle_name VARCHAR(255) NULL DEFAULT NULL,
@@ -40,6 +57,9 @@ CREATE TABLE contacts (
   birth_day TINYINT NULL DEFAULT NULL,
   id_city INTEGER NULL DEFAULT NULL,
   id_employer INTEGER NULL DEFAULT NULL,
+  how_met TEXT NULL DEFAULT NULL,
+  photo INTEGER NULL DEFAULT NULL,
+  business_card INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (id)
 )
 
