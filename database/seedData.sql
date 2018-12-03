@@ -1,4 +1,4 @@
-INSERT INTO `cities` (`created_at`, `updated_at`, `city`) VALUES
+INSERT INTO cities (created_at, updated_at, city) VALUES
 (NOW(), NOW(), 'Honolulu'),
 (NOW(), NOW(), 'San Diego'),
 (NOW(), NOW(), 'Seattle'),
@@ -20,7 +20,7 @@ INSERT INTO `cities` (`created_at`, `updated_at`, `city`) VALUES
 (NOW(), NOW(), 'Las Vegas');
 
 
-INSERT INTO `groups` (`created_at`, `updated_at`, `group`) VALUES
+INSERT INTO groups (created_at, updated_at, group) VALUES
 (NOW(), NOW(), 'Family'),
 (NOW(), NOW(), 'Friend'),
 (NOW(), NOW(), 'Close Friend'),
