@@ -55,12 +55,24 @@ CREATE TABLE contacts (
   birth_year SMALLINT NULL DEFAULT NULL,
   birth_month TINYINT NULL DEFAULT NULL,
   birth_day TINYINT NULL DEFAULT NULL,
-  id_city INTEGER NULL DEFAULT NULL,
-  id_employer INTEGER NULL DEFAULT NULL,
+  id_city INTEGER NULL DEFAULT NULL,  -- ref
+  id_employer INTEGER NULL DEFAULT NULL,  -- ref
+  spouse INTEGER NULL DEFAULT NULL, -- ref
+  occupation VARCHAR(255) NULL DEFAULT NULL,
+  last_contacted DATE NULL DEFAULT NULL,
+  when_met DATE NULL DEFAULT NULL,
   how_met TEXT NULL DEFAULT NULL,
-  photo INTEGER NULL DEFAULT NULL,
-  business_card INTEGER NULL DEFAULT NULL,
+  id_photo INTEGER NULL DEFAULT NULL,  -- ref
+  id_business_card INTEGER NULL DEFAULT NULL,  -- ref
+
   PRIMARY KEY (id)
+
+  -- food preferences
+  -- color preferences
+  -- personality type
+  -- style
+  -- life events 
+
 )
 
 
@@ -147,13 +159,13 @@ CREATE TABLE groups (
 
 
 -- ---
--- Table 'people_groups'
+-- Table 'contact_groups'
 -- 
 -- ---
 
-DROP TABLE IF EXISTS people_groups;
+DROP TABLE IF EXISTS contact_groups;
 
-CREATE TABLE people_groups (
+CREATE TABLE contact_groups (
   id INTEGER NOT NULL AUTO_INCREMENT,
   created_at TIMESTAMP NULL DEFAULT NULL,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -230,3 +242,18 @@ CREATE TABLE photos (
   url TEXT NULL DEFAULT NULL,
   PRIMARY KEY (id)
 )
+
+
+-- Tables to add
+-- descriptions
+-- contacts_phone_numbers
+-- contacts_emails
+-- addresses
+-- contacts_addresses
+-- states
+-- countries
+-- events
+-- contacts_events
+-- industries
+-- industries_events
+-- occupations
