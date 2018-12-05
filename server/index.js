@@ -1,4 +1,8 @@
-require('dotenv').config({path: '../.env'});
+// require('dotenv').config({path: '../.env'});
+require('dotenv').config();
+const path = require('path');
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -11,18 +15,23 @@ const connection = mysql.createConnection({
 });
 
 connection.connect();
-
-connection.query('SELECT * FROM cities', (err, rows, fields) => {
+connection.query('SELECT * FROM crm_cities', (err, rows, fields) => {
   if (err) throw err;
   console.log(rows[0]);
-})
-
-connection.end();
-
+});
 
 const app = express();
+app.use(bodyParser.json());
 const port = 8000;
 
-app.get('/', (req, res) => res.send('hello world'));
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// app.get('*', (req, res) => {
+//   res.redirect('/');
+// });
+
+// app.get('/', (req, res) => res.send('../src/index.html'));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+// connection.end();
