@@ -24,7 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 const port = 8000;
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // app.get('*', (req, res) => {
 //   res.redirect('/');
