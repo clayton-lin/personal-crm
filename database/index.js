@@ -77,7 +77,25 @@ const deleteInteraction = (contact, callback) => {
   
 }
 
+const retriveInteractions = (contact, callback) => {
 
+}
+
+const addLifeEvent = (contact, callback) => {
+  
+}
+
+const updateLifeEvent = (contact, callback) => {
+  
+}
+
+const deleteLifeEvent = (contact, callback) => {
+  
+}
+
+const retriveLifeEvents = (contact, callback) => {
+
+}
 
 module.export = {
   retrieveAllContacts,
@@ -93,4 +111,9 @@ module.export = {
   addInteraction,
   updateInteraction,
   deleteInteraction,
+  retriveInteractions,
+  addLifeEvent,
+  updateLifeEvent,
+  deleteLifeEvent,
+  retriveLifeEvents
 }

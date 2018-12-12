@@ -259,14 +259,14 @@ CREATE TABLE photos (
 -- events
   -- life events
 -- preferences
-  -- colors: [{}, {}],
-  -- foods: [{}, {}],
-  -- animals: [{}, {}],
-  -- locations: [{}, {}],
-  -- activites: [{}, {}],
-  -- books: [{}, {}],
-  -- movies: [{}, {}],
-  -- shows: [{}, {}],
-  -- styles: [{}, {}],
-  -- sportsTeams: [{}, {}],
+  -- colors
+  -- foods
+  -- animals
+  -- locations
+  -- activites
+  -- books
+  -- movies
+  -- shows
+  -- styles
+  -- sportsTeams
 -- personality profiles
