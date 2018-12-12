@@ -15,7 +15,7 @@ connection.query('SELECT * FROM crm_cities', (err, rows) => {
 const retrieveAllContacts = (user, callback) => {
   const { userId } = user;
   const queryString = `
-    SELECT * FROM contacts WHERE user_id = ${userId}
+    SELECT * FROM contacts WHERE user_id = ${userId};
   `;
   connection.query(queryString, (err, results) => {
     if (err) {
@@ -29,6 +29,68 @@ const retrieveAllContacts = (user, callback) => {
   });
 }
 
+const addNewContact = (contact, callback) => {
+  
+}
+
+const updateName = (contact, callback) => {
+  
+}
+
+const updateCity = (contact, callback) => {
+  
+}
+
+const updateEmployer = (contact, callback) => {
+  
+}
+
+const addEmail = (contact, callback) => {
+  
+}
+
+const deleteEmail = (contact, callback) => {
+  
+}
+
+const addPhoneNumber = (contact, callback) => {
+  
+}
+
+const deletePhoneNumber = (contact, callback) => {
+  
+}
+
+const updateGroup = (contact, callback) => {
+  
+}
+
+const addInteraction = (contact, callback) => {
+  
+}
+
+const updateInteraction = (contact, callback) => {
+  
+}
+
+const deleteInteraction = (contact, callback) => {
+  
+}
+
+
+
 module.export = {
-  retrieveAllContacts
+  retrieveAllContacts,
+  addNewContact,
+  updateName,
+  updateCity,
+  updateEmployer,
+  addEmail,
+  deleteEmail,
+  addPhoneNumber,
+  deletePhoneNumber,
+  updateGroup,
+  addInteraction,
+  updateInteraction,
+  deleteInteraction,
 }
