@@ -60,7 +60,7 @@ CREATE TABLE contacts (
   spouse INTEGER NULL DEFAULT NULL, -- ref
   occupation VARCHAR(255) NULL DEFAULT NULL,
   last_contacted DATE NULL DEFAULT NULL,
-  when_met DATE NULL DEFAULT NULL,
+  date_met DATE NULL DEFAULT NULL,
   how_met TEXT NULL DEFAULT NULL,
   id_photo INTEGER NULL DEFAULT NULL,  -- ref
   id_business_card INTEGER NULL DEFAULT NULL,  -- ref
@@ -244,7 +244,7 @@ CREATE TABLE photos (
 )
 
 
--- Tables to add
+-- TABLES TO ADD
 -- descriptions
 -- contacts_phone_numbers
 -- contacts_emails
@@ -252,8 +252,21 @@ CREATE TABLE photos (
 -- contacts_addresses
 -- states
 -- countries
--- events
 -- contacts_events
 -- industries
 -- industries_events
 -- occupations
+-- events
+  -- life events
+-- preferences
+  -- colors: [{}, {}],
+  -- foods: [{}, {}],
+  -- animals: [{}, {}],
+  -- locations: [{}, {}],
+  -- activites: [{}, {}],
+  -- books: [{}, {}],
+  -- movies: [{}, {}],
+  -- shows: [{}, {}],
+  -- styles: [{}, {}],
+  -- sportsTeams: [{}, {}],
+-- personality profiles
