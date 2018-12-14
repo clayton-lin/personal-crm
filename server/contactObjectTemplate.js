@@ -5,9 +5,9 @@ const contact = {
   preferredName: '',
   middleName: '',
   familyName: '', 
-  maidenName: ''
+  maidenName: '',
   gender: '', 
-  photo: {},
+  // photo: {},
   // spouse: {},
   // children: [{}, {}],
   birthYear: 2000,
