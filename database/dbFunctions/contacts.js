@@ -1,11 +1,11 @@
-
+const mysql = require('../index.js');
 
 const retrieveAllContacts = (user, callback) => {
   const { userId } = user;
   const queryString = `
     SELECT * FROM contacts WHERE user_id = ${userId};
   `;
-  connection.query(queryString, (err, results) => {
+  mysql.connection.query(queryString, (err, results) => {
     if (err) {
       console.log(`error: contact retrieval for user ${userID} failed`);
       console.log(err);
@@ -18,7 +18,6 @@ const retrieveAllContacts = (user, callback) => {
 }
 
 const addContact = (user, contact, callback) => {
-
   const { userId } = user;
 
   const {
@@ -32,18 +31,6 @@ const addContact = (user, contact, callback) => {
     birthYear,
     birthMonth,
     birthDay,
-    phoneNumbers,
-    emails,
-    // address,
-    // city,
-    // lastContacted,
-    // dateMet,
-    // howMet,
-    // businessCards,
-    // employer,
-    // industry,
-    // occupation,
-    groups
   } = contact;
 
   const queryString = `
@@ -54,11 +41,15 @@ const addContact = (user, contact, callback) => {
       ${maidenName}, ${gender}, ${birthYear}, ${birthMonth}, ${birthDay})
   `;
 
-
+  mysql.connection.query(queryString, (err, results) => {
+    if (err) {
+      console.log(`error: add contact for user ${userID} failed`);
+      console.log(err);
+      callback(err, null);
+    } else {
+      console.log(`contact ${givenName} ${familyName} successfully added for user ${userId}`);
+      callback(null, results);
+    }
+  });
 }
 
-
-module.exports = {
-  retrieveAllContacts,
-  addContact
-}

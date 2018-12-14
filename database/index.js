@@ -1,6 +1,3 @@
-const contacts = require('./dbFunctions.contacts.js');
-
-
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -18,5 +15,5 @@ connection.query('SELECT * FROM crm_cities', (err, rows) => {
 });
 
 module.exports = {
-  contacts
+  connection
 }
