@@ -17,6 +17,38 @@ const retrieveAllContacts = (user, callback) => {
   });
 }
 
+const verifyContactExists = (user, contact, callback) => {
+  const { userId } = user;
+
+  const {
+    givenName,
+    preferredName,
+    middleName,
+    familyName, 
+    maidenName,
+    gender,
+    photo,
+    birthYear,
+    birthMonth,
+    birthDay,
+  } = contact;
+
+  const queryString = `
+    
+  `;
+
+  mysql.connection.query(queryString, (err, results) => {
+    if (err) {
+      console.log(`error: `);
+      console.log(err);
+      callback(err, null);
+    } else {
+      console.log(``);
+      callback(null, results);
+    }
+  });
+}
+
 const addContact = (user, contact, callback) => {
   const { userId } = user;
 
@@ -55,5 +87,6 @@ const addContact = (user, contact, callback) => {
 
 module.exports = {
   retrieveAllContacts,
+  verifyContactExists,
   addContact
 }

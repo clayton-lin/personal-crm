@@ -1,5 +1,25 @@
 const mysql = require('../index.js');
 
+const verifyEmailExists = (user, contact, callback) => {
+  const { userId } = user;
+  const { contactId } = contact;
+
+  const queryString = `
+    
+  `;
+
+  mysql.connection.query(queryString, (err, results) => {
+    if (err) {
+      console.log(`error: `);
+      console.log(err);
+      callback(err, null);
+    } else {
+      console.log(``);
+      callback(null, results);
+    }
+  });
+}
+
 const addEmail = (user, contact, callback) => {
   const { userId } = user;
   const { contactId } = contact;
@@ -61,6 +81,7 @@ const deleteEmail = (user, contact, callback) => {
 }
 
 module.exports = {
+  verifyEmailExists,
   addEmail,
   updateEmail,
   deleteEmail
