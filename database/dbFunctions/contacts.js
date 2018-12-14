@@ -25,7 +25,7 @@ const addContact = (user, contact, callback) => {
     preferredName,
     middleName,
     familyName, 
-    maidenName
+    maidenName,
     gender,
     photo,
     birthYear,
