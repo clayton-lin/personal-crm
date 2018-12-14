@@ -53,3 +53,7 @@ const addContact = (user, contact, callback) => {
   });
 }
 
+module.exports = {
+  retrieveAllContacts,
+  addContact
+}
