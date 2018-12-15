@@ -14,4 +14,6 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', routes.router);
 
+const addContactTest = require('./addContactTest.js');
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
