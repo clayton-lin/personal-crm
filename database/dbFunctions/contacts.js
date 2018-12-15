@@ -26,15 +26,11 @@ const verifyContactExists = (user, contact, callback) => {
     middleName,
     familyName, 
     maidenName,
-    gender,
-    photo,
-    birthYear,
-    birthMonth,
-    birthDay,
+    gender
   } = contact;
 
   const queryString = `
-    
+    SELECT * FROM crm_contacts WHERE preferred_name = '${preferredName}' AND family_name = ${familyName}
   `;
 
   mysql.connection.query(queryString, (err, results) => {
@@ -66,16 +62,16 @@ const addContact = (user, contact, callback) => {
   } = contact;
 
   const queryString = `
-    INSERT INTO contacts
-      (created_at, updated_at, user, given_name, preferred_name, middle_name, 
+    INSERT INTO crm_contacts
+      (user, given_name, preferred_name, middle_name, 
       family_name, maiden_name, gender, birth_year, birth_month, birth_day) VALUES 
-      (${NOW()}, ${NOW()}, ${userId}, ${givenName}, ${preferredName}, ${middleName}, ${familyName}, 
-      ${maidenName}, ${gender}, ${birthYear}, ${birthMonth}, ${birthDay})
+      ('${userId}', '${givenName}', '${preferredName}', '${middleName}', '${familyName}', 
+      '${maidenName}', '${gender}', ${birthYear}, ${birthMonth}, ${birthDay})
   `;
 
   mysql.connection.query(queryString, (err, results) => {
     if (err) {
-      console.log(`error: add contact for user ${userID} failed`);
+      console.log(`error: add contact for user ${userId} failed`);
       console.log(err);
       callback(err, null);
     } else {
