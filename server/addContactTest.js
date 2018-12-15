@@ -17,6 +17,19 @@ const contact = {
   birthDay: 10,
 }
 
+// promise chain
+// check if contact exists in database
+// if yes,
+  // return message that says contact already in db
+// if no
+  // add contact and return sucess message and contact id
+  // add phone number to db
+  // add email to db
+
+
+
+
+
 contacts.addContact(user, contact, (err, results) => {
   console.log('COMPLETE');
   console.log(results);
