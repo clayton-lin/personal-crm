@@ -30,7 +30,7 @@ const verifyContactExists = (user, contact, callback) => {
   } = contact;
 
   const queryString = `
-    SELECT * FROM crm_contacts WHERE preferred_name = '${preferredName}' AND family_name = ${familyName}
+    SELECT * FROM crm_contacts WHERE user = ${userId} AND preferred_name = '${preferredName}' AND family_name = ${familyName}
   `;
 
   mysql.connection.query(queryString, (err, results) => {
