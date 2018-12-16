@@ -1,10 +1,69 @@
 const mysql = require('../index.js');
 
 
-const retrievePhoneNumbers = (user) => {
+const retrievePhoneNumbers = (contactId) => {
   return new Promise((resolve, reject) => {
+    const queryString = `
+      SELECT * FROM crm_phone_numbers WHERE contact_id = ${contactId};
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err)
+      }
+      const results = {
+        contactId,
+        rows
+      }
+      resolve(results);
+    });
+    
+  });
+};
 
-    const { userId } = user;
+const verifyPhoneNumberExists = (contactId, phoneNumber) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      const results = {
+        contactId,
+        phoneNumber,
+        rows
+      }
+      resolve(results);
+    });
+  });
+};
+
+const addPhoneNumber = (contactId, phoneNumber) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      const results = {
+        contactId,
+        phoneNumber,
+        rows
+      }
+      resolve(results);
+    });
+  });
+};
+
+const updatePhoneNumber = (contactId, phoneNumber) => {
+  return new Promise((resolve, reject) => {
+    const { userId } = contactId;
   
     const queryString = `
       
@@ -12,96 +71,40 @@ const retrievePhoneNumbers = (user) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) {
-        return reject(err)
+        return reject(err);
       }
-      resolve(rows);
+      const results = {
+        contactId,
+        phoneNumber,
+        rows
+      }
+      resolve(results);
     });
-    
   });
-}
+};
 
-
-const verifyPhoneNumberExists = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
+const deletePhoneNumber = (contactId, phoneNumber) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      const results = {
+        contactId,
+        phoneNumber,
+        rows
+      }
+      resolve(results);
+    });
   });
-}
-
-const addPhoneNumber = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
-  });
-}
-
-const updatePhoneNumber = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
-  });
-}
-
-const deletePhoneNumber = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
-  });
-}
+};
 
 module.exports = {
+  retrievePhoneNumbers,
   verifyPhoneNumberExists,
   addPhoneNumber,
   updatePhoneNumber,
