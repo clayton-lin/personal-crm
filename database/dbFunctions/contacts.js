@@ -42,7 +42,12 @@ const verifyContactExists = (user, contact) => {
       if (err) {
         return reject(err);
       }
-      resolve(rows);
+      const results = {
+        user,
+        contact,
+        rows
+      }
+      resolve(results);
     });
   })
 }
@@ -78,7 +83,12 @@ const addContact = (user, contact) => {
       if (err) {
         return reject(err);
       }
-      resolve(rows);
+      const results = {
+        user,
+        contact,
+        rows
+      }
+      resolve(results);
     });
   });
 }
