@@ -8,7 +8,7 @@ const user = {
 
 const contact = {
   givenName: 'Clayton',
-  preferredName: 'Claytone',
+  preferredName: 'Clayton',
   middleName: 'YT',
   familyName: 'Lin', 
   maidenName: '',
@@ -29,7 +29,7 @@ contacts.verifyContactExists(user, contact)
 
   if (rows[0]) {
     const found = rows[0];
-    throw `contact '${found.preferred_name}' '${found.family_name}' already exists for user ${user.userId}`;
+    throw `contact '${found.preferred_name} ${found.family_name}' already exists for user ${user.userId}`;
   }
 
   return contacts.addContact(user, contact);
@@ -38,6 +38,8 @@ contacts.verifyContactExists(user, contact)
 .then((data) => {
   const { user, contact, rows } = data;
   const contactId = rows.insertId;
+
+  console.log(`contact '${contact.preferredName} ${contact.familyName}' added, contactId = ${contactId}`)
 
 })
 // then add email to table referencing contact's id
