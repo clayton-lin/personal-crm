@@ -35,7 +35,7 @@ const verifyContactExists = (user, contact) => {
     } = contact;
   
     const queryString = `
-      SELECT * FROM crm_contacts WHERE user_id = '${userId}' AND preferred_name = '${preferredName}' AND family_name = '${familyName}'
+      SELECT * FROM contacts WHERE user_id = '${userId}' AND preferred_name = '${preferredName}' AND family_name = '${familyName}'
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
@@ -72,7 +72,7 @@ const addContact = (user, contact) => {
     } = contact;
 
     const queryString = `
-      INSERT INTO crm_contacts
+      INSERT INTO contacts
         (user_id, given_name, preferred_name, middle_name, 
         family_name, maiden_name, gender, birth_year, birth_month, birth_day) VALUES 
         ('${userId}', '${givenName}', '${preferredName}', '${middleName}', '${familyName}', 

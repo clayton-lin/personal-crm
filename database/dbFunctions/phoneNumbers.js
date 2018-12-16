@@ -4,7 +4,7 @@ const mysql = require('../index.js');
 const retrievePhoneNumbers = (contactId) => {
   return new Promise((resolve, reject) => {
     const queryString = `
-      SELECT * FROM crm_phone_numbers WHERE contact_id = ${contactId};
+      SELECT * FROM phone_numbers WHERE contact_id = ${contactId};
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
