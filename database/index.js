@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 connection.connect();
 
 // check if db successfully connected
-connection.query('SELECT * FROM crm_cities', (err, rows) => {
+connection.query('SELECT * FROM cities', (err, rows) => {
   if (err) throw err;
   console.log(rows[0]);
 });
