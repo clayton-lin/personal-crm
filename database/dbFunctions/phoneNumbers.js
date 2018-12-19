@@ -66,9 +66,11 @@ const addPhoneNumber = (contactId, phoneNumber) => {
 
 const updatePhoneNumber = (contactId, phoneNumber) => {
   return new Promise((resolve, reject) => {
-  
+    // phone number is already formatted to XXX-XXX-XXXX
     const queryString = `
-      
+      UPDATE phone_numbers
+        SET digits = '${phoneNumber}
+        WHERE id = ${contactId}
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
