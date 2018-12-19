@@ -47,7 +47,7 @@ const addPhoneNumber = (contactId, phoneNumber) => {
     // phone number is already formatted to XXX-XXX-XXXX
     const queryString = `
       INSERT INTO phone_numbers (contacts_id, digits) VALUES
-        (contactId, phoneNumber)
+        (${contactId}, '${phoneNumber}')
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
