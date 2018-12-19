@@ -24,7 +24,7 @@ const retrievePhoneNumbers = (contactId) => {
 const verifyPhoneNumberExists = (contactId, phoneNumber) => {
   return new Promise((resolve, reject) => {
     const queryString = `
-      
+ 
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
@@ -43,8 +43,10 @@ const verifyPhoneNumberExists = (contactId, phoneNumber) => {
 
 const addPhoneNumber = (contactId, phoneNumber) => {
   return new Promise((resolve, reject) => {
+    // phone number is already formatted to XXX-XXX-XXXX
     const queryString = `
-      
+      INSERT INTO phone_numbers (contacts_id, digits) VALUES
+        (contactId, phoneNumber)
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
