@@ -24,7 +24,8 @@ const retrievePhoneNumbers = (contactId) => {
 const verifyPhoneNumberExists = (contactId, phoneNumber) => {
   return new Promise((resolve, reject) => {
     const queryString = `
- 
+      SELECT * FROM phone_numbers WHERE 
+        contactId = ${contactId} AND digits = '${phoneNumber}'
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
@@ -65,7 +66,6 @@ const addPhoneNumber = (contactId, phoneNumber) => {
 
 const updatePhoneNumber = (contactId, phoneNumber) => {
   return new Promise((resolve, reject) => {
-    const { userId } = contactId;
   
     const queryString = `
       
