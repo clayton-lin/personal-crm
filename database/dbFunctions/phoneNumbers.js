@@ -9,7 +9,7 @@ const retrievePhoneNumbers = (contactId) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) {
-        return reject(err)
+        return reject(err);
       }
       const results = {
         contactId,
@@ -87,10 +87,10 @@ const updatePhoneNumber = (contactId, phoneNumber) => {
   });
 };
 
-const deletePhoneNumber = (contactId, phoneNumber) => {
+const deletePhoneNumber = (phoneNumberId) => {
   return new Promise((resolve, reject) => {
     const queryString = `
-      
+      DELETE FROM phone_numbers WHERE id = ${phoneNumberId};
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
@@ -98,8 +98,7 @@ const deletePhoneNumber = (contactId, phoneNumber) => {
         return reject(err);
       }
       const results = {
-        contactId,
-        phoneNumber,
+        phoneNumberId,
         rows
       }
       resolve(results);
