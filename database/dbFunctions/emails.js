@@ -1,84 +1,73 @@
 const mysql = require('../index.js');
 
-const verifyEmailExists = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
+const verifyEmailExists = (contactId) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, field) => {
+      if (err) {
+        return reject(err);
+      }
+      const result = {
+        contactId,
+        email,
+        rows
+      };
+      resolve(result);
+    });
   });
-}
+};
 
-const addEmail = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
-    
-  `;
-
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
+const addEmail = (contactId, email) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      
+    `;
+  
+    mysql.connection.query(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      const results = {
+        contactId,
+        email,
+        rows
+      };
+      resolve(results);
+    });
   });
-}
+};
 
-const updateEmail = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
-
-  const queryString = `
+const updateEmail = (contactId, email) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
     
-  `;
+    `;
 
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
+    mysql.connection(queryString, (err, rows, fields) => {
+      if (err) {
+        return reject(err);
+      }
+      const results = {
+        contactId,
+        email,
+        rows
+      };
+      resolve(results);
+    });
   });
-}
+};
 
-const deleteEmail = (user, contact, callback) => {
-  const { userId } = user;
-  const { contactId } = contact;
 
-  const queryString = `
-    
-  `;
 
-  mysql.connection.query(queryString, (err, results) => {
-    if (err) {
-      console.log(`error: `);
-      console.log(err);
-      callback(err, null);
-    } else {
-      console.log(``);
-      callback(null, results);
-    }
-  });
-}
+
+const deleteEmail = 
+
+
+
+
 
 module.exports = {
   verifyEmailExists,
