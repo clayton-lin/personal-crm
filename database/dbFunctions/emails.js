@@ -1,22 +1,24 @@
 const mysql = require('../index.js');
 
-const verifyEmailExists = (contactId) => {
+const queryDB = (queryString, contactId, email) => {
+  mysql.connection.query(queryString, (err, rows, field) => {
+    if (err) { return reject(err) }
+    const results = {
+      contactId,
+      email,
+      rows
+    }
+    resolve(results);
+  });
+};
+
+const verifyEmailExists = (contactId, email) => {
   return new Promise((resolve, reject) => {
     const queryString = `
       
     `;
-  
-    mysql.connection.query(queryString, (err, rows, field) => {
-      if (err) {
-        return reject(err);
-      }
-      const result = {
-        contactId,
-        email,
-        rows
-      };
-      resolve(result);
-    });
+
+    return queryDB(queryString, contactId, email);
   });
 };
 
@@ -26,17 +28,7 @@ const addEmail = (contactId, email) => {
       
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        email,
-        rows
-      };
-      resolve(results);
-    });
+    return queryDB(queryString, contactId, email);
   });
 };
 
@@ -46,28 +38,19 @@ const updateEmail = (contactId, email) => {
     
     `;
 
-    mysql.connection(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        email,
-        rows
-      };
-      resolve(results);
-    });
+    return queryDB(queryString, contactId, email);
   });
 };
 
+const deleteEmail = (contactId, email) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+    
+    `;
 
-
-
-const deleteEmail = 
-
-
-
-
+    return queryDB(queryString, contactId, email);
+  });
+};
 
 module.exports = {
   verifyEmailExists,
