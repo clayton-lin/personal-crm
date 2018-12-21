@@ -8,14 +8,8 @@ const retrievePhoneNumbers = (contactId) => {
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve({ rows, contactId });
     });
     
   });
@@ -29,15 +23,8 @@ const verifyPhoneNumberExists = (contactId, phoneNumber) => {
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        phoneNumber,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve({ rows, contactId, phoneNumber });
     });
   });
 };
@@ -51,38 +38,24 @@ const addPhoneNumber = (contactId, phoneNumber) => {
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        phoneNumber,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve({ rows, contactId, phoneNumber });
     });
   });
 };
 
-const updatePhoneNumber = (contactId, phoneNumber) => {
+const updatePhoneNumber = (phoneNumberId, phoneNumber) => {
   return new Promise((resolve, reject) => {
     // phone number is already formatted to XXX-XXX-XXXX
     const queryString = `
       UPDATE phone_numbers
         SET digits = '${phoneNumber}'
-        WHERE id = ${contactId};
+        WHERE id = ${phoneNumberId};
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        contactId,
-        phoneNumber,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve({ rows, phoneNumberId, phoneNumber });
     });
   });
 };
@@ -94,14 +67,8 @@ const deletePhoneNumber = (phoneNumberId) => {
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        phoneNumberId,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve({ rows, phoneNumberId });
     });
   });
 };
