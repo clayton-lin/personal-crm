@@ -3,7 +3,6 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const database = require('../database/index.js');
 const routes = require('./routes.js');
 const port = process.env.PORT || 8000;
 
@@ -14,6 +13,12 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', routes.router);
 
-const addContactTest = require('./addContactTest.js');
+
+
+
+require('./addContactTest.js');
+
+
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

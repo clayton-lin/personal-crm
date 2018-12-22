@@ -1,4 +1,4 @@
-const mysql = require('../index.js');
+const { connection } = require('../index.js');
 
 const retrieveAllContacts = (user) => {
   return new Promise((resolve, reject) => {
@@ -9,7 +9,7 @@ const retrieveAllContacts = (user) => {
       SELECT * FROM contacts WHERE user_id = ${userId};
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) {
         return reject(err)
       }
@@ -38,7 +38,7 @@ const verifyContactExists = (user, contact) => {
       SELECT * FROM contacts WHERE user_id = '${userId}' AND preferred_name = '${preferredName}' AND family_name = '${familyName}'
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
@@ -72,7 +72,7 @@ const addContact = (user, contact) => {
         '${maidenName}', '${gender}', ${birthYear}, ${birthMonth}, ${birthDay})
     `;
 
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });

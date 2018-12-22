@@ -1,4 +1,4 @@
-const mysql = require('../index.js');
+const { connection } = require('../index.js');
 
 
 // returns all phone numbers for given contactId
@@ -8,7 +8,7 @@ const retrievePhoneNumbers = (contactId) => {
       SELECT * FROM phone_numbers WHERE contacts_id = ${contactId};
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
@@ -26,7 +26,7 @@ const verifyPhoneNumberExists = (contactId, phoneNumber) => {
         contactId = ${contactId} AND digits = '${phoneNumber}';
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
@@ -43,7 +43,7 @@ const addPhoneNumber = (contactId, phoneNumber) => {
         (${contactId}, '${phoneNumber}');
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
@@ -62,7 +62,7 @@ const updatePhoneNumber = (phoneNumberId, phoneNumber) => {
         WHERE id = ${phoneNumberId};
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
@@ -77,7 +77,7 @@ const deletePhoneNumber = (phoneNumberId) => {
       DELETE FROM phone_numbers WHERE id = ${phoneNumberId};
     `;
   
-    mysql.connection.query(queryString, (err, rows, fields) => {
+    connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
       resolve(rows);
     });
