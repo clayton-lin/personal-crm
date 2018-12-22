@@ -68,7 +68,7 @@ const addContact = (user, contact) => {
       INSERT INTO contacts
         (user_id, given_name, preferred_name, middle_name, 
         family_name, maiden_name, gender, birth_year, birth_month, birth_day) VALUES 
-        ('${userId}', '${givenName}', '${preferredName}', '${middleName}', '${familyName}', 
+        (${userId}, '${givenName}', '${preferredName}', '${middleName}', '${familyName}', 
         '${maidenName}', '${gender}', ${birthYear}, ${birthMonth}, ${birthDay})
     `;
 
@@ -78,6 +78,32 @@ const addContact = (user, contact) => {
     });
   });
 }
+
+
+const updateContact = (contactId, contact) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      UPDATE contacts SET
+        user_id = ${userId}, 
+        given_name = '${givenName}', 
+        preferred_name = '${preferredName}', 
+        middle_name = '${middleName}', 
+        family_name = '${familyName}', 
+        maiden_name = '${maidenName}', 
+        gender = '${gender}', 
+        birth_year = ${birthYear}, 
+        birth_month = ${birthMonth}, 
+        birth_day = ${birthDay},
+        WHERE id = ${contactId};
+    `;
+  
+    connection.query(queryString, (err, rows, fields) => {
+      if (err) { return reject(err); }
+      resolve(rows);
+    });
+  });
+};
+
 
 
 const deleteContact = (contactId) => {
@@ -99,5 +125,6 @@ module.exports = {
   retrieveAllContacts,
   verifyContactExists,
   addContact,
+  updateContact,
   deleteContact
 }
