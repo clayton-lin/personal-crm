@@ -21,7 +21,7 @@ const verifyEmailExists = (contactId, email) => {
   return new Promise((resolve, reject) => {
     const queryString = `
       SELECT * FROM emails WHERE 
-        contactId = ${contactId} AND digits = '${email}';
+        contactId = ${contactId} AND email_address = '${email}';
     `;
   
     connection.query(queryString, (err, rows, fields) => {
@@ -36,7 +36,7 @@ const verifyEmailExists = (contactId, email) => {
 const addEmail = (contactId, email) => {
   return new Promise((resolve, reject) => {
     const queryString = `
-      INSERT INTO emails (contacts_id, digits) VALUES
+      INSERT INTO emails (contacts_id, email_address) VALUES
         (${contactId}, '${email}');
     `;
   
@@ -54,7 +54,7 @@ const updateEmail = (emailId, email) => {
     // phone number is already formatted to XXX-XXX-XXXX
     const queryString = `
       UPDATE emails
-        SET digits = '${email}'
+        SET email_address = '${email}'
         WHERE id = ${emailId};
     `;
   
