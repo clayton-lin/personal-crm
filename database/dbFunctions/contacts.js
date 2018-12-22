@@ -79,8 +79,25 @@ const addContact = (user, contact) => {
   });
 }
 
+
+const deleteContact = (contactId) => {
+  return new Promise((resolve, reject) => {
+    const queryString = `
+      DELETE FROM contacts WHERE id = ${contactId};
+    `;
+  
+    connection.query(queryString, (err, rows, fields) => {
+      if (err) { return reject(err); }
+      resolve(rows);
+    });
+  });
+};
+
+
+
 module.exports = {
   retrieveAllContacts,
   verifyContactExists,
-  addContact
+  addContact,
+  deleteContact
 }
