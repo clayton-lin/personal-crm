@@ -1,52 +1,71 @@
 const contacts = require('../database/dbFunctions/contacts');
+const phoneNumbers = require('../database/dbFunctions/phoneNumbers');
+const emails = require('../database/dbFunctions/emails');
+
 
 const user = {
   userId: 0,
-  preferredName: 'Clayton',
-  familyName: 'Lin'
-}
+  preferredName: 'Stan',
+  familyName: 'Lee'
+};
 
-const contact = {
-  givenName: 'Clayton',
-  preferredName: 'Clayton',
-  middleName: 'YT',
-  familyName: 'Lin', 
+const contact1 = {
+  givenName: 'Philip',
+  preferredName: 'Phil',
+  middleName: 'J.',
+  familyName: 'Coulson', 
   maidenName: '',
   gender: 'male',
   photo: null,
-  birthYear: 1989,
-  birthMonth: 11,
-  birthDay: 10,
-}
+  birthYear: 1970,
+  birthMonth: 12,
+  birthDay: 25,
+  phoneNumber: '123-456-7890',
+  email: 'philip.j.coulson@shield.com'
+};
 
-// verify whether contact exists in database for user
-// searches using preferred_name and family_name
-contacts.verifyContactExists(user, contact)
-// if contact exists, throw error
-// else add contact
-.then((data) => {
-  const { user, contact, rows } = data;
 
-  if (rows[0]) {
-    const found = rows[0];
-    throw `contact '${found.preferred_name} ${found.family_name}' already exists for user ${user.userId}`;
-  }
+const addNewContact = (user, newContact) => {
+  const { userId } = user;
+  const { preferredName, familyName, phoneNumber, email } = newContact;
+  let contactId;
+  let phoneNumberId;
+  let emailId;
 
-  return contacts.addContact(user, contact);
-})
-// then add phone number to table referencing contact's id
-.then((data) => {
-  const { user, contact, rows } = data;
-  const contactId = rows.insertId;
+  return contacts.verifyContactExists(user, newContact)
+    .then((data) => {
+      if (data[0]) {
+        const { preferred_name, family_name} = data[0];
+        throw `Contact '${preferred_name} ${family_name}' already exists for user ${user.userId}`;
+      }
 
-  console.log(`contact '${contact.preferredName} ${contact.familyName}' added, contactId = ${contactId}`)
+      return contacts.addContact(user, newContact);
+    })
+    .then((data) => {
+      contactId = data.insertId;
+      console.log(`Contact '${preferredName} ${familyName}' added for userId = ${userId}, contactId = ${contactId}`);
 
-})
-// then add email to table referencing contact's id
-.then((data) => {
+      return phoneNumbers.addPhoneNumber(contactId, phoneNumber);
+    })
+    .then((data) => {
+      phoneNumberId = data.insertId;
+      console.log(`Phone number '${phoneNumber}' added for contactId = ${contactId}, phoneNumberId = ${phoneNumberId}`);
 
-})
-.catch((err) => {
-  console.log(err);
-});
+      return emails.addEmail(contactId, email);
+    })
+    .then((data) => {
+      emailId = data.insertId;
+      console.log(`Email '${email}' added for contactId = ${contactId}, emailId = ${emailId}`);
+      
+      console.log(`Add new contact ${contactId} completed`);
+    })
+    .then(() => {
+      contacts.deleteContact(contactId);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
+};
+
+addNewContact(user, contact1);
