@@ -10,7 +10,7 @@ const retrievePhoneNumbers = (contactId) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId });
+      resolve(rows);
     });
     
   });
@@ -28,7 +28,7 @@ const verifyPhoneNumberExists = (contactId, phoneNumber) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId, phoneNumber });
+      resolve(rows);
     });
   });
 };
@@ -45,7 +45,7 @@ const addPhoneNumber = (contactId, phoneNumber) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId, phoneNumber });
+      resolve(rows);
     });
   });
 };
@@ -64,7 +64,7 @@ const updatePhoneNumber = (phoneNumberId, phoneNumber) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, phoneNumberId, phoneNumber });
+      resolve(rows);
     });
   });
 };
@@ -79,10 +79,11 @@ const deletePhoneNumber = (phoneNumberId) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, phoneNumberId });
+      resolve(rows);
     });
   });
 };
+
 
 module.exports = {
   retrievePhoneNumbers,

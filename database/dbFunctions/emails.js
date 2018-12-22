@@ -17,32 +17,32 @@ const retrieveEmails = (contactId) => {
 
 
 // verifies whether email already exists as an entry for given contactId
-const verifyEmailExists = (contactId, Email) => {
+const verifyEmailExists = (contactId, email) => {
   return new Promise((resolve, reject) => {
     const queryString = `
       SELECT * FROM emails WHERE 
-        contactId = ${contactId} AND digits = '${Email}';
+        contactId = ${contactId} AND digits = '${email}';
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId, Email });
+      resolve(rows);
     });
   });
 };
 
 
 // creates new email entry in database for given contactId
-const addEmail = (contactId, Email) => {
+const addEmail = (contactId, email) => {
   return new Promise((resolve, reject) => {
     const queryString = `
       INSERT INTO emails (contacts_id, digits) VALUES
-        (${contactId}, '${Email}');
+        (${contactId}, '${email}');
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId, Email });
+      resolve(rows);
     });
   });
 };
@@ -60,7 +60,7 @@ const updateEmail = (emailId, email) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, emailId, email });
+      resolve(rows);
     });
   });
 };
@@ -75,7 +75,7 @@ const deleteEmail = (emailId) => {
   
     mysql.connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, emailId });
+      resolve(rows);
     });
   });
 };

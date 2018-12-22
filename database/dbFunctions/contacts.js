@@ -39,15 +39,8 @@ const verifyContactExists = (user, contact) => {
     `;
   
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        user,
-        contact,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve(rows);
     });
   })
 }
@@ -80,15 +73,8 @@ const addContact = (user, contact) => {
     `;
 
     mysql.connection.query(queryString, (err, rows, fields) => {
-      if (err) {
-        return reject(err);
-      }
-      const results = {
-        user,
-        contact,
-        rows
-      }
-      resolve(results);
+      if (err) { return reject(err); }
+      resolve(rows);
     });
   });
 }
