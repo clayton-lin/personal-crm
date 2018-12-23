@@ -74,7 +74,8 @@ const addNewContact = async (user, newContact) => {
     const { preferredName, familyName, phoneNumber, email } = newContact;
 
     try {
-      if (await contacts.verifyContactExists(user, newContact)) {
+      const foundContact = await contacts.verifyContactExists(user, newContact);
+      if (foundContact) {
         throw `Contact '${preferredName} ${familyName}' already exists for user ${userId}`;
       }
 
