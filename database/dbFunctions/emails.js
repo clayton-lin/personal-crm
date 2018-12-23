@@ -9,7 +9,7 @@ const retrieveEmails = (contactId) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve({ rows, contactId });
+      resolve(rows);
     });
     
   });
@@ -26,7 +26,7 @@ const verifyEmailExists = (contactId, email) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows[0]);
     });
   });
 };
@@ -42,7 +42,7 @@ const addEmail = (contactId, email) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows.insertId);
     });
   });
 };

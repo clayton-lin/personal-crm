@@ -28,7 +28,7 @@ const verifyPhoneNumberExists = (contactId, phoneNumber) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows[0]);
     });
   });
 };
@@ -45,7 +45,7 @@ const addPhoneNumber = (contactId, phoneNumber) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows.insertId);
     });
   });
 };

@@ -40,7 +40,7 @@ const verifyContactExists = (user, contact) => {
   
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows[0]);
     });
   })
 }
@@ -74,7 +74,7 @@ const addContact = (user, contact) => {
 
     connection.query(queryString, (err, rows, fields) => {
       if (err) { return reject(err); }
-      resolve(rows);
+      resolve(rows.insertId);
     });
   });
 }
