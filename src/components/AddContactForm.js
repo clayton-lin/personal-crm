@@ -5,8 +5,8 @@ class AddContactForm extends Component {
     super(props);
     this.state = {
       newContactInfo: {
-          userId: null,
-          contactId: null,
+          // userId: null,
+          // contactId: null,
           givenName: '',
           preferredName: '',
           middleName: '',
@@ -25,15 +25,15 @@ class AddContactForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handdleChange(e) {
+  handleChange(e) {
+    const { name, value } = e.target;
     this.setState({
-      
+      [name]: value
     });
-
   }
 
   handleSubmit(e) {
-    event.preventDefault();
+    e.preventDefault();
 
   }
 
@@ -42,7 +42,16 @@ class AddContactForm extends Component {
       <div>
         <h1>AddContactForm</h1>
         <form onSubmit={this.handleSubmit} >
-
+          <label>
+            First Name: 
+            <input 
+              name="givenName"
+              type="text" 
+              value={this.state.givenName}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
