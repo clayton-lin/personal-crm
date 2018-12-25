@@ -21,18 +21,29 @@ class AddContactForm extends Component {
       }
     };
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-
-
-
+  handdleChange(e) {
+    this.setState({
+      
+    });
 
   }
 
+  handleSubmit(e) {
+    event.preventDefault();
+
+  }
 
   render() {
     return (
       <div>
         <h1>AddContactForm</h1>
+        <form onSubmit={this.handleSubmit} >
+
+        </form>
       </div>
     );
   }
