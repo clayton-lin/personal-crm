@@ -12,7 +12,7 @@ class AddContactForm extends Component {
           middleName: '',
           familyName: '',
           maidenName: '',
-          gender: '',
+          gender: null,
           birthYear: null,
           birthMonth: null,
           birthDay: null,
@@ -22,7 +22,6 @@ class AddContactForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -34,14 +33,6 @@ class AddContactForm extends Component {
 
     this.setState({
       newContact
-    });
-  }
-
-  handleSelect(e) {
-    console.log(e);
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value
     });
   }
 
@@ -116,8 +107,32 @@ class AddContactForm extends Component {
           </div>
 
           <div>
-            Birthday:
             <label>
+              Gender:
+              <input
+                name="gender"
+                type="radio"
+                value="Male"
+                onChange={this.handleChange}
+              />Male
+              <input
+                name="gender"
+                type="radio" 
+                value="Female"
+                onChange={this.handleChange}
+              />Female
+              <input
+                name="gender"
+                type="radio" 
+                value="Other"
+                onChange={this.handleChange}
+              />Other
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Birthday:
               <input
                 name="birthMonth"
                 type="number" 
@@ -125,8 +140,6 @@ class AddContactForm extends Component {
                 onChange={this.handleChange}
                 placeholder="MM"
               />
-            </label>
-            <label>
               <input
                 name="birthDay"
                 type="number" 
@@ -134,8 +147,6 @@ class AddContactForm extends Component {
                 onChange={this.handleChange}
                 placeholder="DD"
               />
-            </label>
-            <label>
               <input
                 name="birthYear"
                 type="number" 
