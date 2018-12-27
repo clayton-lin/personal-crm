@@ -10,7 +10,7 @@ class AddContactForm extends Component {
           givenName: '',
           preferredName: '',
           middleName: '',
-          familyName: '', 
+          familyName: '',
           maidenName: '',
           gender: '',
           birthYear: null,
@@ -42,7 +42,7 @@ class AddContactForm extends Component {
       <div>
         <h1>AddContactForm</h1>
         <form onSubmit={this.handleSubmit} >
-        
+
           <div>
             <label>
               First Name: 
@@ -59,9 +59,9 @@ class AddContactForm extends Component {
             <label>
               Preferred Name: 
               <input
-                name="preferrednName"
+                name="preferredName"
                 type="text" 
-                value={this.state.givenName}
+                value={this.state.preferredName}
                 onChange={this.handleChange}
               />
             </label>
@@ -72,7 +72,7 @@ class AddContactForm extends Component {
               Middle Name: 
               <input name="middleName"
                 type="text" 
-                value={this.state.givenName}
+                value={this.state.middleName}
                 onChange={this.handleChange}
               />
             </label>
@@ -83,7 +83,7 @@ class AddContactForm extends Component {
               Last Name: 
               <input name="familyName"
                 type="text" 
-                value={this.state.givenName}
+                value={this.state.lastName}
                 onChange={this.handleChange}
               />
             </label>
@@ -94,7 +94,7 @@ class AddContactForm extends Component {
               Maiden Name: 
               <input name="maidennName"
                 type="text" 
-                value={this.state.givenName}
+                value={this.state.maidenName}
                 onChange={this.handleChange}
               />
             </label>
