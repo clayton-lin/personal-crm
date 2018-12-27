@@ -4,7 +4,7 @@ class AddContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newContactInfo: {
+      newContact: {
           // userId: null,
           // contactId: null,
           givenName: '',
@@ -22,10 +22,23 @@ class AddContactForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
+    const { name, value } = e.target;
+    let newContact = Object.assign({}, this.state.newContact);
+    newContact[name] = value;
+    // let newContact = { ...this.state.newContact, [name]: value}; // why isn't this working
+
+    this.setState({
+      newContact
+    });
+  }
+
+  handleSelect(e) {
+    console.log(e);
     const { name, value } = e.target;
     this.setState({
       [name]: value
@@ -49,7 +62,7 @@ class AddContactForm extends Component {
               <input
                 name="givenName"
                 type="text" 
-                value={this.state.givenName}
+                value={this.state.newContact.givenName}
                 onChange={this.handleChange}
               />
             </label>
@@ -61,7 +74,7 @@ class AddContactForm extends Component {
               <input
                 name="preferredName"
                 type="text" 
-                value={this.state.preferredName}
+                value={this.state.newContact.preferredName}
                 onChange={this.handleChange}
               />
             </label>
@@ -73,7 +86,7 @@ class AddContactForm extends Component {
               <input
                 name="middleName"
                 type="text" 
-                value={this.state.middleName}
+                value={this.state.newContact.middleName}
                 onChange={this.handleChange}
               />
             </label>
@@ -84,7 +97,7 @@ class AddContactForm extends Component {
               Last Name: 
               <input name="familyName"
                 type="text" 
-                value={this.state.lastName}
+                value={this.state.newContact.lastName}
                 onChange={this.handleChange}
               />
             </label>
@@ -94,9 +107,9 @@ class AddContactForm extends Component {
             <label>
               Maiden Name: 
               <input
-                name="maidennName"
+                name="maidenName"
                 type="text" 
-                value={this.state.maidenName}
+                value={this.state.newContact.maidenName}
                 onChange={this.handleChange}
               />
             </label>
@@ -108,7 +121,7 @@ class AddContactForm extends Component {
               <input
                 name="birthMonth"
                 type="number" 
-                value={this.state.birthMonth}
+                value={this.state.newContact.birthMonth}
                 onChange={this.handleChange}
                 placeholder="MM"
               />
@@ -117,7 +130,7 @@ class AddContactForm extends Component {
               <input
                 name="birthDay"
                 type="number" 
-                value={this.state.birthDay}
+                value={this.state.newContact.birthDay}
                 onChange={this.handleChange}
                 placeholder="DD"
               />
@@ -126,7 +139,7 @@ class AddContactForm extends Component {
               <input
                 name="birthYear"
                 type="number" 
-                value={this.state.birthYear}
+                value={this.state.newContact.birthYear}
                 onChange={this.handleChange}
                 placeholder="YYYY"
               />
