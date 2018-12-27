@@ -103,6 +103,37 @@ class AddContactForm extends Component {
           </div>
 
           <div>
+            Birthday:
+            <label>
+              <input
+                name="birthMonth"
+                type="number" 
+                value={this.state.birthMonth}
+                onChange={this.handleChange}
+                placeholder="MM"
+              />
+            </label>
+            <label>
+              <input
+                name="birthDay"
+                type="number" 
+                value={this.state.birthDay}
+                onChange={this.handleChange}
+                placeholder="DD"
+              />
+            </label>
+            <label>
+              <input
+                name="birthYear"
+                type="number" 
+                value={this.state.birthYear}
+                onChange={this.handleChange}
+                placeholder="YYYY"
+              />
+            </label>
+          </div>
+
+          <div>
             <label>
               <input
                 name="submit"
