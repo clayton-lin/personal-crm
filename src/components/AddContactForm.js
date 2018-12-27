@@ -42,16 +42,65 @@ class AddContactForm extends Component {
       <div>
         <h1>AddContactForm</h1>
         <form onSubmit={this.handleSubmit} >
-          <label>
-            First Name: 
-            <input 
-              name="givenName"
-              type="text" 
-              value={this.state.givenName}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
+        
+          <div>
+            <label>
+              First Name: 
+              <input
+                name="givenName"
+                type="text" 
+                value={this.state.givenName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Preferred Name: 
+              <input
+                name="preferrednName"
+                type="text" 
+                value={this.state.givenName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Middle Name: 
+              <input name="middleName"
+                type="text" 
+                value={this.state.givenName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Last Name: 
+              <input name="familyName"
+                type="text" 
+                value={this.state.givenName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Maiden Name: 
+              <input name="maidennName"
+                type="text" 
+                value={this.state.givenName}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          
         </form>
       </div>
     );
