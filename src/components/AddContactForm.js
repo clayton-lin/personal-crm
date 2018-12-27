@@ -70,7 +70,8 @@ class AddContactForm extends Component {
           <div>
             <label>
               Middle Name: 
-              <input name="middleName"
+              <input
+                name="middleName"
                 type="text" 
                 value={this.state.middleName}
                 onChange={this.handleChange}
@@ -92,7 +93,8 @@ class AddContactForm extends Component {
           <div>
             <label>
               Maiden Name: 
-              <input name="maidennName"
+              <input
+                name="maidennName"
                 type="text" 
                 value={this.state.maidenName}
                 onChange={this.handleChange}
@@ -100,7 +102,14 @@ class AddContactForm extends Component {
             </label>
           </div>
 
-          
+          <div>
+            <label>
+              <input
+                name="submit"
+                type="submit" 
+              />
+            </label>
+          </div>
         </form>
       </div>
     );
