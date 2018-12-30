@@ -159,6 +159,33 @@ class AddContactForm extends Component {
 
           <div>
             <label>
+              Phone Number:
+              <input
+                name="phoneNumber"
+                type="text"
+                pattern="[0-9]*"
+                // format="(###) ###-####"
+                // mask=""
+                value={this.state.newContact.phoneNumber}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Email:
+              <input
+                name="email"
+                type="emails" 
+                value={this.state.newContact.email}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
               <input
                 name="submit"
                 type="submit" 
