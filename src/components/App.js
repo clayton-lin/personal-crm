@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar';
 import AddContactForm from './AddContactForm';
 
 
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <div>
         <h1>Personal-CRM App</h1>
+        <NavBar />
         <AddContactForm/>
       </div>
     );
