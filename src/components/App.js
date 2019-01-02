@@ -11,7 +11,7 @@ class App extends Component {
         <h1>Personal-CRM App</h1>
         <NavBar />
         <SideBar />
-        <AddContactForm/>
+        <Display />
       </div>
     );
   }
